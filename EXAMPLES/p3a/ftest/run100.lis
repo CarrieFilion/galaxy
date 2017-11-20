@@ -1,0 +1,33 @@
+
+
+ Mesh size    51   125
+     gamma = 0.000
+ Power law spacing of grid rings with exponent   1.000
+ Inner and outer edges of radial grid are at    0.00 and   50.0000 grid units
+ Maximum z distance of grid is   12.40 grid units
+ Radial forces active
+ Writing Green function file header
+ Writing Green function file header
+ Green function creation complete
+ nzones =  1
+ ptcls length needed         0
+         5 test masses
+ Position    8   13
+ Position    3    1
+ Position    7    2
+ Position   15   99
+ Position    5    9
+ Checking Green function file header
+ Green fn used from file
+ Checking Green function file header
+ 
+ Results from PACHKF:
+
+     Radial forcs
+ Max absolute error  0.3502E-06 at   7   9 for values -0.06410480 -0.06410515
+
+     Vertcl forcs
+ Max absolute error  0.1043E-06 at   5   8 for values  0.15355133  0.15355143
+
+     Potentials  
+ Max absolute error  0.6348E-05 at   7  99 for values -0.35897362 -0.35896727

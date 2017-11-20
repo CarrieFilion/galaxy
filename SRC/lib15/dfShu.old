@@ -1,0 +1,200 @@
+      real*8 function dfShu( E, Lz )
+c  Copyright (C) 2015, Jerry Sellwood
+      implicit none
+c Distribution function of the form F_0(Lz) exp[-(E-E_c)/sigmu_u^2]
+c   as Shu (1969, ApJ v158, p505)
+c need to pre-tabulate the radial velocity dispersion and kappa in order
+c   to avoid recursive calls to NAG routines
+c   uses NAG routines D01BCF and F04JGF
+c
+c calling arguments
+      real*8 E, Lz
+c
+c common blocks
+c
+      include 'inc/params.f'
+c
+      include 'inc/admin.f'
+c
+      include 'inc/model.f'
+c
+c externals
+      real*8 akappa, Emax, errfn, GSigma, Omegac, Phitot, PLgndr, rcirc
+      real*8 splint2, vcirc
+c
+c local arrays
+      real*8, allocatable :: a( :, : )
+      real*8, allocatable :: absc( : )
+      real*8, allocatable :: coeff( : )
+      real*8, allocatable :: rhs( : )
+      real*8, allocatable :: wgt( : )
+      real*8, allocatable :: work( : )
+      real*8 w( 4 )
+c tables of sigma_R and kappa^2/Omega
+      real*8, allocatable :: RShu( : )
+      real*8, allocatable :: k2O( : )
+      real*8, allocatable :: k2Oc( : )
+      real*8, allocatable :: k2Olam( : )
+      real*8, allocatable :: svR( : )
+      real*8, allocatable :: svRc( : )
+      real*8, allocatable :: svRlam( : )
+c
+c local variables
+      integer ia, ind, ir, irank, ifail, ifun, itype, iuse, lwork, nfun
+      integer nrads, npts
+      logical lsvd
+      real*8 ak, arg, dR, Ec, Elim, L, L1, norm, Om, Phi, Phih, Q, R
+      real*8 res, Rh, Rm, Shukrn, stderr, svRR, tol, x, zero
+      parameter ( nfun = 20, npts = 64, nrads = 501, zero = 0 )
+      save coeff, Elim, iuse, RShu, svR, svRc, svRlam
+      include 'inc/pi.f'
+      data iuse / 0 /
+c
+      if( iuse .ne. icmp )then
+        if( master )print *, 'Starting set up of a Shu DF'
+        allocate ( RShu( nrads ) )
+        allocate ( k2O( nrads ) )
+        allocate ( svR( nrads ) )
+c set table of svR values
+        dR = rtrunc( icmp ) / real( nrads - 1 )
+        Q = dfcns( 1, icmp )
+        do ir = 1, nrads
+          R = dR * real( ir - 1 )
+          Om = Omegac( R )
+          ak = akappa( R )
+          ak = min( ak, 2. * Om )
+          RShu( ir ) = R
+          svR( ir ) = 3.36 * Q * GSigma( R ) / ak
+          k2O( ir ) = ak**2 / Om
+        end do
+c initialize spline interpolations
+        allocate ( k2Oc( nrads + 4 ) )
+        allocate ( k2Olam( nrads + 4 ) )
+        allocate ( svRc( nrads + 4 ) )
+        allocate ( svRlam( nrads + 4 ) )
+        R = .5 * rtrunc( icmp )
+        ak = splint2( RShu, k2O, nrads, R, k2Olam, k2Oc, .true. )
+        svRR = splint2( RShu, svR, nrads, R, svRlam, svRc, .true. )
+c allocate space for matrix
+        allocate ( a( nrads, nfun ) )
+        allocate ( rhs( nrads ) )
+        allocate ( absc( npts ) )
+        allocate ( wgt( npts ) )
+c set up matrix
+        do ir = 2, nrads
+          R = RShu( ir )
+          x = rtrunc( icmp )
+          x = ( 2. * R - x ) / x
+c find largest L whose orbit crosses R
+          L = 0
+          L1 = Lztmx( icmp )
+          L1 = 1.d+5
+          tol = 1.d-8
+          ia = 0
+          ind = 1
+          ifail = 0
+          Phi = Phitot( R )
+          do while ( ind .gt. 0 )
+            call fndzro( L, L1, res, tol, ia, w, ind, ifail )
+            res = Phi + .5 * ( L / R )**2 - Emax( L )
+          end do
+c set integration bound
+          Rm = rcirc( L )
+          Rm = min( Rm, dble( rtrunc( icmp ) ) )
+          if( lnag )then
+c set integration weights
+            itype = 0
+            ifail = 0
+            call d01bcf( itype, zero, Rm, zero, zero, npts,
+     +                   wgt, absc, ifail )
+          else
+            call nonag( 'DFSHU', 'D01BCF' )
+          end if
+c work over columns
+          do ifun = 1, nfun
+c integrate over Rh
+            a( ir, ifun ) = 0
+            do ia = 1, npts
+              Rh = absc( ia )
+              L = Rh * vcirc( Rh )
+c
+              svRR =
+     +            splint2( RShu, svR, nrads, Rh, svRlam, svRc, .false. )
+              Shukrn = 0
+              if( svRR .gt. 0.d0 )then
+c argument of error fn = sqrt(-2Phi_eff/sigma^2)
+                arg = ( L / R )**2 + 2. * Phi
+                arg = max( -arg, 0.d0 )
+                arg = sqrt( arg ) / svRR
+                ifail = 0
+                Shukrn = errfn( arg, ifail )
+c exponential factor
+                Phih = Phitot( Rh )
+                arg =
+     +               .5 * L**2 * ( 1. / R**2 - 1. / Rh**2 ) + Phi - Phih
+                arg = arg / svRR**2
+                Shukrn = Shukrn * exp( -arg )
+c remaining factors
+                ak =
+     +            splint2( RShu, k2O, nrads, Rh, k2Olam, k2Oc, .false. )
+                Shukrn = sqrt( .5 * pi ) * Shukrn * Rh * svRR * ak
+              end if
+c
+              a( ir, ifun ) = a( ir, ifun ) +
+     +                        wgt( ia ) * Shukrn * PLgndr( x, ifun - 1 )
+            end do
+          end do
+c set RHS
+          rhs( ir ) = R * GSigma( R )
+        end do
+c central value
+        rhs( 1 ) = GSigma( 0.d0 )
+        R = 0
+        svRR = splint2( RShu, svR, nrads, R, svRlam, svRc, .false. )
+        x = sqrt( Emax( 0.d0 ) - Phitot( 0.d0 ) ) / svRR
+        norm = sqrt( 2.d0 ) * svRR * errfn( x, ifail )
+        do ifun = 1, nfun
+          a( 1, ifun ) = norm * PLgndr( zero, ifun - 1 )
+        end do
+c solve matrix
+        if( lnag )then
+          lwork = 4 * nfun
+          allocate ( work( lwork ) )
+          tol = 1.d-5
+          ifail = 0
+          call f04jgf( nrads, nfun, a, nrads, rhs, tol, lsvd, stderr,
+     +                 irank, work, lwork, ifail )
+          allocate ( coeff( nfun ) )
+          do ifun = 1, nfun
+            coeff( ifun ) = rhs( ifun )
+          end do
+        else
+          call nonag( 'DFSHU', 'F04JGF' )
+        end if
+c set disk energy bound and finish set up
+        r = rtrunc( icmp )
+        Elim = Phitot( R ) + .5 * vcirc( r )**2
+        iuse = icmp
+        if( master )print *, 'Done set up of a Shu DF'
+      end if
+c default value
+      dfShu = 0
+      if( E .lt. Elim )then
+c find home radius and circular energy
+        Rh = rcirc( abs( Lz ) )
+        Phi = Phitot( Rh )
+        Ec = Phi
+        if( Rh .gt. 0.d0 )Ec = Phi + 0.5 * ( Lz / Rh )**2
+c look up require vely dispersion
+        svRR = splint2( RShu, svR, nrads, Rh, svRlam, svRc, .false. )
+c sum over coefficients
+        x = rtrunc( icmp )
+        x = ( 2. * Rh - x ) / x
+        do ifun = 1, nfun
+          dfShu = dfShu + coeff( ifun ) * PLgndr( x, ifun - 1 )
+        end do
+c expansion may dip below zero for some narrow range of values
+        dfShu = max( dfShu, 0.d0 ) * exp( ( Ec - E ) / svRR**2 )
+      end if
+      return
+      end

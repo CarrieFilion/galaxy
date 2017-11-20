@@ -1,0 +1,34 @@
+run no           321
+code type        c3d
+#
+ncom               1
+#
+disc               t           # disc t/f
+type            mfk            # type keyword
+mass         1.                # mass in this pop
+scale        1.0       1.0     # length scale and truncation radius of this pop
+dftype        none     0.      # initial Q
+#
+mesh size         65        65        65 # mesh dimensions
+shape           1.       1.      1.     # cubic cells
+#
+time step      0.02            # for shortest zone (times 10,000)
+zones              1           # number of zones
+lscale            30           # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+#vmass              f           # individual particle masses
+#cntd              16           # recenter grid at this step interval
+#
+icmp               1
+npar               2           # number of particles in the disc
+z0init        0.0              # initial thickness of population
+start        f   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis           1           # step interval
+plot               1           # time interval for pictures
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step       200

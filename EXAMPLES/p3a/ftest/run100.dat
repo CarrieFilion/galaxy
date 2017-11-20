@@ -1,0 +1,17 @@
+run no           100
+code type        p3a
+#
+grid size         51       125 # mesh dimensions
+power law     0.0              # 0 for equal spacing
+z spacing     0.2              # in grid units
+skip                           # active vertical forces only if 0 here
+#
+nzones             1
+#
+Test mass          5
+posn               8        13         1
+posn               3         1        23
+posn               7         2        23
+posn              15        99         3
+posn               5         9         5
+posn               1         1         1

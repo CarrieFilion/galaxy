@@ -1,0 +1,41 @@
+run no           301
+code type        p3d
+#
+ncom               1
+#
+disc               t           # disc t/f
+type            mfk            # type keyword
+mass         1.                # mass in this pop
+scale        1.0       1.0     # length scale and truncation radius of this pop
+dftype        none     0.      # initial Q
+#
+grid size         32       128        45 # mesh dimensions
+z spacing   0.2                # in grid units
+HASH              64           # components active
+#power law   1.0                # 1 for logarithmic
+#uoffs             10           # no of divisions inside r=1
+#interpolat         3           # 2 for linear (default), 3 for quadratic
+softl       0.05   2           # softening length in grid units
+sectors            1           # fraction of 2*pi to contain particles
+skip                           # sectoral harmonics to be skipped
+#
+time step      0.02            # for shortest zone (times 10,000)
+zones              1           # number of zones
+lscale             2           # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+#vmass              f           # individual particle masses
+#cntd              16           # recenter grid at this step interval
+#
+icmp               1
+npar               2           # number of particles in the disc
+z0init        0.0              # initial thickness of population
+start        f   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis           1           # step interval
+plot               1           # time interval for pictures
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step       200

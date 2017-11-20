@@ -1,0 +1,23 @@
+
+
+ Mesh size    64    64
+ Softening length is  2.000000 mesh spaces
+ Writing Green function file header
+ Writing Green function file header
+  Green function creation complete
+ nzones =  1
+ ptcls length needed         0
+         5 test masses
+ Position    8   13
+ Position    3    1
+ Position    7    2
+ Position   15   64
+ Position    5    9
+ Checking Green function file header
+ Green fn used from file
+ Checking Green function file header
+
+ Field type  Max abs error   x   y  values
+  x forces     0.37253E-07  21   1  -0.013013467  -0.013013430
+  y forces     0.52154E-07   7   5  -0.034264918  -0.034264866
+Potentials     0.59605E-06   7   4  -0.837671161  -0.837670565

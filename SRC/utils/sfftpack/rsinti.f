@@ -1,0 +1,14 @@
+      SUBROUTINE RSINTI (N,WSAVE)
+      IMPLICIT REAL (A-H,O-Z)
+      DIMENSION       WSAVE(1)
+      DATA PI /3.14159265358979323846/
+      IF (N .LE. 1) RETURN
+      NS2 = N/2
+      NP1 = N+1
+      DT = PI/FLOAT(NP1)
+      DO 101 K=1,NS2
+         WSAVE(K) = 2.0*SIN(K*DT)
+  101 CONTINUE
+      CALL SFFTI (NP1,WSAVE(NS2+1))
+      RETURN
+      END

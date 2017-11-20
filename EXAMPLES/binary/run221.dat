@@ -1,0 +1,31 @@
+run no           221
+code type        c2d
+#
+ncom               1
+#
+disc               t           # disc t/f
+type            mfk            # type keyword
+mass         1.                # mass in this pop
+scale        1.0       1.0     # length scale and truncation radius of this pop
+dftype        none     0.      # initial Q
+#
+grid size         64        64 # mesh dimensions
+softl       2.0   1           # softening length in grid units
+#
+time step      0.02            # for shortest zone (times 10,000)
+zones              1           # number of zones
+lscale            30           # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+#
+icmp               1
+npar               2           # number of particles in the disc
+start        f   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis           1           # step interval
+plot               1           # time interval for pictures
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step       200

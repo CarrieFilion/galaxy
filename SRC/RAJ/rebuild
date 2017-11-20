@@ -1,0 +1,16 @@
+#!/bin/sh
+# remove old version
+rm -f ../../lib/RAJ.a
+ln -s ../lib15/inc/ .  > /dev/null 2>&1
+echo "this will take a few seconds"
+# work through list of files
+for i in `cat list`
+do
+# -w suppresses all warnings
+  gfortran -w -c -O ${i}.f90
+done
+# create library and clean up
+ar r ../../lib/RAJ.a *.o
+rm -f *.o
+rm -f *.mod
+rm -f inc

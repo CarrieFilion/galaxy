@@ -1,0 +1,11 @@
+The subdirectories here contain the source code for the main Galaxy
+library (lib14), the library for running in parallel (lib14_mpi), the
+routines writted by Richard James for the 3D Cartesian Poisson solver
+(RAJ), single precision versions of the FFTs from FFTPAK (sfftpak), and
+the main programs (progs).
+
+You should cd in turn to all subdirectories, saving progs to last, and
+issue the command "rebuild" in each to create object libraries from all
+this source code.
+
+You should then cd to subdirectory progs, where you can run make.

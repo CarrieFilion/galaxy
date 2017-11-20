@@ -1,0 +1,42 @@
+run no           100
+grid type        c2d
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type            mfk            # type keyword
+mass         1.0               # mass in this pop
+scale        1.0               # length scale and truncation radius of this pop
+dftype        cpb0             # initial Q
+#
+# instructions for c2d
+#
+grid size        256       256 # mesh dimensions
+softl       2.0                # softening length in grid units
+#
+# instructions for setrun
+#
+time step    0.00833333333     # in natural units
+zones              1           # number of zones
+lscale           100           # length scaling from model to grid units
+offgrid            t  f  f   f # switches to inc ptcls in analysis and forces
+suppl              t           # turn on supplementary forces
+#
+icmp               1
+npar           20000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis          20         1 # step interval
+moni              20           # monitor 5% of the particles
+plot             100           # time interval for pictures
+dvel fld          50        12 # vel moment bins - radial then azimuthal
+lgsp              61         4 # 
+rhor             200           #
+hbins            100           # number of ang mom bins
+frqs              50           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step      2000

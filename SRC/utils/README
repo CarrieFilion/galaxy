@@ -1,0 +1,22 @@
+This omnibus directory contains the source code for most of the
+software that replaces NAG calls (the remaining code is supplied in
+the GALAXY directory lib15/)
+
+With the exception of LAPACK, there are scripts named "rebuild" in
+every sub-directory from here that will add the compiled object
+modules to the omnibus library, which is:
+
+    $HOME/libutils.a
+
+These scripts may be found in the following subdirectories:
+
+ fftpack/sfftpak (GALAXY needs only single precision versions)
+ quadpack
+ cmlib
+ Burkardt
+
+The separate LAPACK library should be created by "make" in its base
+directory "lapack" and the library liblapack.a should be moved into
+the home directory.  As the BLAS routines are also needed, they can be
+added to liblapack.a by running "rebuild" in the directory
+lapack/BLAS/SRC

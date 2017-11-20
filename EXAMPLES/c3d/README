@@ -1,0 +1,25 @@
+The files in directory invite the user to try two simulations with the
+3D Cartesian grid.
+
+             ------------------------
+
+Run100 is a simple test run to set up a fully self-gravitating disk in
+approximate equilibrium from a given .dfn
+
+The script run100.s should set up and evolve the model for a short period.
+
+             ------------------------
+
+Run999 is an example that uses dfiter to set up disk + bulge model.
+
+The first step is to run the script dfiter.s, which should create the
+file run999.pft containing the potential of the disk + halo system
+after the last interation
+
+With this in hand, it is then possible to run the script smooth.s to
+select particles from the DF in the equilibrium potential.  It will
+create the file run999.dfn
+
+After these two preliminary steps, the script run999.s will setup and
+evolve the model for a short period.  The model should be in
+approximate equilibrium.

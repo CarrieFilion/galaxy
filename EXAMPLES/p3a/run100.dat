@@ -1,0 +1,46 @@
+run no           100
+code type        p3a           # force method
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type              kt           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0       6.0     # length scale and truncation radius of this pop
+dftype         kaln    6.0     # DFtype
+Lzcrit       0.2               # parameter for retrograde particles
+taper             f            # no additional taper needed
+#
+# instructions for setgrd
+#
+grid size        101       375 # mesh dimensions (nr, nz)
+power law     0.0              # 0 for equal radial spacing
+z spacing     0.2              # vertical spacing in grid units
+skip                           # active vertical forces only if 0 here
+#
+# begin instructions for setrun
+#
+time step   0.005              # in natural units
+zones              3           # number of zones
+                   2  2.0
+                   4  4.0
+lscale      15.0               # length scale
+offg               t  f  f   f # include offgrid particles in analysis
+supplement         t           # correct forces for grid effects
+#
+icmp               1
+npar          100000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+z0init      0.0005               # 1 for a sphere
+end data for pop 1
+#
+analysis          20           # step interval
+plot             200           # time interval for pictures
+dvel fld           5         1 # vel moment bins - radial then azimuthal
+frqs              20           # number/lscale in table of frequencies
+rhor             100           # save density profile from every n particles
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step        200

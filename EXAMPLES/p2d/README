@@ -1,0 +1,19 @@
+The files in this directory allow the user to run the standard test of
+the code that should reproduce the dominant unstable mode predicted by
+linear theory for a Kuzmin-Toomre disk with no random motion.
+
+The script run.s first creates the initial run100.pcs0 file and
+then implements pcs2dmp and then galaxy to run this case
+for a short period.  The script clean.s will remove most files that
+are no longer needed after the run is complete.
+
+Following the execution of this script, an interactive run of progam
+analys will reveal very little change to the model until late in the
+evolution, since the instability grows from very low amplitude because
+of the quiet start.  But option lgan will allow the user to see linear
+growth and to get a rough estimate of the growth rate.
+
+The script modefit.s will enable you to derive a more precise value
+for the eigenfrequency.  One recent run of this program by the author
+yielded the value: 0.5392+0.1584i, while the value predicted by linear
+theory is: 0.540+0.158i

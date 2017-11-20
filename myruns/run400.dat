@@ -1,0 +1,51 @@
+run no           400
+code type        p2d
+#
+# This data file is my first attempt at replicating Sellwoods paper, where the disk is a Finite Mestel disk
+# the distribution function is Zang, where our Q is the 1.5 quoted in the paper.
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type            MTZ           # type keyword
+mass          1.                # mass in this pop
+scale         1.0      20.0     # length scale and truncation radius of this pop
+dftype         zang   1.5      # zang distribution function
+iind            4        #inner taper index
+outt           6     15.0      # outer taper & mean radius
+#
+#  instructions for p2d
+#
+grid size        230       256 # mesh dimensions
+HASH               2           # highest active sectoral harmonic
+softl          4            # softening length in grid units
+sectors            2           # fraction of 2*pi to contain particle1s
+skip            0              # turn off fixed radial forces
+#
+time step     0.02             # for shortest zone
+zones              2           # number of zones
+                   2   3.0     # step ratio and radius of zone boundary
+lscale            10           # length scaling from model to grid units
+offgrid            t  f  f   f # switches to inc ptcls in analysis and forces
+uqmass             f           # individual particle masses
+#
+icmp               1
+npar           600000           # number of particles in this pop
+start        t   f   t         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis          20           # step interval
+plot             300           # time interval for pictures
+dvel fld           5        12 # radial then azimuthal bins
+lgsp              61         1 # np then nm
+hbins            100           # number of ang mom bins
+rhor             150           # density profile from particles and stride
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+danl
+intg
+lval
+end of results file instructions
+#
+end                            last data card
+last step       4000

@@ -1,0 +1,48 @@
+run no           100
+# test of the isochrone/12 disk - predicted frequency of the most unstable
+# mode is 0.59+0.21i
+code             sf2
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type            isoc           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0       4.0     # length scale and truncation radius of this pop
+dftype         kaln   12.0     # DFtype
+Kretro            t            # select Kalnajs's rule for retrograde ptcls
+taper             f            # no outer taper
+#
+# data for SFPSET
+Abel-Jacobi  7          # basis choice: number is k in this case
+minm maxm minn maxn     # basis functions to be used
+   2    2    0   20     # m, n = number of radial, azimuthal functions
+nrtab          1001     # number of radii at which to tabulate functions
+minmaxr   1.0           # Min & max allowed value of MAXR (function edge)
+maxmaxr   1.0           #     as a fraction of the initial disc edge.
+# threshold 0.01          # Linear growth threshold
+sectors            2    # fraction of 2pi containing particles
+#
+time step     0.05             # for shortest zone
+#zones              1           # number of zones
+zones              2           # number of zones
+                   2   3.0     # step ratio and radius of zone boundary
+lscale        1.0              # no grid units for SFP
+#
+icmp               1
+npar          120000           # number of particles in the disc
+start        t   f   t         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis          20           # step interval
+plot             600           # time interval for pictures
+dvel fld           5        12 # radial then azimuthal bins
+lgsp              61         1 # np then nm
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+#
+end                            last data card
+last step       1200

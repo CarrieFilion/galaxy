@@ -1,0 +1,50 @@
+run no           200
+grid type        s3d
+#
+ncom               1           # number of distinct components
+#
+disc               f           # disc t/f
+type            plum           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0       6.0     # length scale and truncation radius of this pop
+dftype          dejo   0.      # isotropic DF
+# 
+# instructions for s3d
+#
+grid size        301    80.0   # mesh size and rmax
+lmax               8           # value of lmax
+sect               1           # order of rotational symmetry imposed
+skip                           # list of sectoral harmonics to skip
+#
+# instructions for setrun
+#
+time step    0.05              # in natural units
+zones              3           # number of zones
+                   2     1.5   # step ratio and radius of boundary
+                   4     3.0   # step ratio and radius of boundary
+lscale        10.0             # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+cntd              16           # recenter grid at this step interval
+#
+perturber  Plum  0.1  0.1      # perturber type mass and scale size
+position    7. 0. 0.           # initial position of perturber center
+velocity    0. 0.3 0.          # initial velocity of the perturber
+#
+icmp               1
+npar          200000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+# 
+analysis          20         1 # step interval
+moni              10           # monitor 10% of the particles
+plot             400           # time interval for pictures
+hvel fld          33        15 # radial then vertical bins
+rhor              50           # stride through sorted halo particles
+sphb               4         4 # spherical Bessel fn analysis
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+moit
+end of results file instructions
+end                            # last data card
+last step      1600

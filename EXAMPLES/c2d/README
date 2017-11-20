@@ -1,0 +1,15 @@
+The files in this directory allow the user to run a stable, composite
+Kalnajs disk model on the 2D Cartesian grid.  It illustrates the use of
+correction forces that are created by mkpcs.
+
+The script run.s will first select particles from the DF using program
+smooth and then create the initial run100.pcs0 file usng program
+mkpcs.  It then implements pcs2dmp and finaly galaxy to run this case
+for a short period.
+
+Following the execution of this script, an interactive run of progam
+analys should reveal that the model is very close to equilibrium, but
+with statistical fluctuations caused by particle shot noise.  This
+could be reduced, if desired, by cranking up the number of particles.
+
+The correction forces table can be examined using program corrplt.

@@ -1,0 +1,34 @@
+The files in this directory are for three illustrative simulations
+using the spherical grid.
+
+--------- 
+
+Run100 is supplied as a good example of how to use the code in the
+simplest possible manner.  The script run100.s creates a .pcs file
+that contains the initial phase space coordinates of 200K particles
+drawn from an equilibrium DF for uniform density sphere, and then runs
+pcs2dmp and galaxy in single processor mode to evolve this stable
+model for a short time interval.
+
+---------
+
+Run200 introduces a rigid perturbing satellite in orbit around a
+Plummer sphere having an isotropic DF.  The script run200.s selects
+particles from the DF of an isotropic Plummer sphere, runs mkpcs to
+set up the .pcs file, after which pcs2dmp and galaxy are run in
+parallel to compute the evolution for a short period.  The motion of
+the satellite, and of the grid center, can be observed using the satl
+option in analys.
+
+--------- 
+
+Run300 is a somewhat artificial example of a Plummer sphere with a
+rigid Hernquist central component that illustrates the use of compress
+and of guard zones.  The script run300.s will take some time to
+execute: it starts by running compress to compute the equilibrium DF
+for the Plummer sphere with the additional central mass component.  It
+creates the files compress.dat and E0tab.dat, which are needed at all
+subsequent stages, including analysis.  It then selects particles from
+this new DF, and uses them to create a .pcs file, and then uses 5
+processors to compute the evolution of this stable spherical system
+for a short period.

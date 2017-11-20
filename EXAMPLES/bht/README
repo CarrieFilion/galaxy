@@ -1,0 +1,6 @@
+The script run.s will first create the initial run100.pcs0 file
+containing 10K particles selected from an isotropic Plummer sphere.
+It then implements pcs2dmp and finally galaxy to run this case for a
+short period using a tree code.  This tree code is horribly slow and
+inefficient: it rebuilds the tree at every step and has not been
+parallelized.

@@ -1,0 +1,174 @@
+
+Jan 27, 2017  New version: v15
+
+* The main improvement is the elimination of all commercial software,
+  in particular of the NAG library.  Calls to routines in this
+  commercial software package have been replaced by calls to open
+  access software.  In many cases, the substituted routine is
+  identical to the NAG version, which was simply a front that passed
+  the call to an open access routine from QUADPACK or LAPACK for
+  example.  In other cases, equivalents have been found from various
+  sources, such as FFTPACK, CMLIB, or the valuable software portal
+  maintained by John Burkardt.
+
+* The addition of two alternative methods to recenter the grid.  The
+  original method (1) followed the particle centroid.  The new methods
+  are: (2) following the center of mass of a fixed number of the most
+  tightly bound particles on each mass component, or (3) following the
+  motion of an extra heavy particle initially at rest at the center.
+  The performance of both these new methods seems inferior to that of
+  method (1) but they are there for users who may wish to try them.
+
+* Minor changes to the specification and handling of rigid, spherical
+  external perturbers
+
+* Many improvements to the analysis package
+
+* Subroutine hedrec was completely rewritten
+
+
+Dec 20, 2016  Updates in v14.52
+
+* The main improvement here is to the s3d code in which the strategy
+  for interpolation between grid rings was revised.  It resulted in
+  minor improvements to the accuracy of the resulting forces as well
+  as executing a little faster.
+
+* Handling of Greek characters, super- and sub-scripts in the
+  annotation of plots should no longer depend on the compiler used
+
+
+Nov 10, 2016  Minor patch in v14.511
+
+* This change fixes a few minor bugs in the dfiter program that failed
+  when used for hybrid codes
+
+* Fixed a bug in program smooth when multiple components have DFs
+
+* Properly initialize two moving centers in subroutine loadup
+
+* Fixed a bug for the hybrid option in the MPI version of massum
+
+
+May 2016  Changes included in v14.50
+
+Version 14.5 of the \softwp{GALAXY} package contains a number of
+significant improvements as summarized here.  In addition, the names
+of the directories have been changed.  As a consequence, there are
+some slight changes to the installation procedure.
+
+* Easier setup: A major change at this version is to separate more
+  completely the part of the code related to setting up the initial
+  particle distribution, from that used to compute the evolution.
+  Most runs of galaxy need only a short ASCII file (.dat) to select
+  parameters, and a binary (.pcs) file containing the particles.  The
+  file of particles can be created in one of three ways:
+  - For those wishing to take advantage of the author's set up codes,
+    the particle file can be created using the program mkpcs
+  - The user can create his/her own .pcs file
+  - Alternatively, for those with files of particles suitable for use
+    in GADGET-2, I have provided an executable to convert them to the
+    format required for GALAXY.
+
+* Program start has been retired, and programs begin and finish have
+  been renamed as pcs2dmp and dmp2pcs for clarity of purpose
+
+* Minor improvements to the .dat file 
+  - The first argument to the analysis options dvel and hvel is now
+    the number of radial bins per scale length of that component.
+    (Previously it was the total number of radial bins, and the code
+    made a sometimes inconvenient conversion.)
+  - The frqs anlysis option requires a parameter which is the number
+    of values to be computed per scale length.  (Previously, the
+    radial spacing was the same as for the dvel bins, which was too
+    limiting.)
+
+* Program compress has been improved and extended to enable
+  equilibrium bulge plus halo models, in the presence of a disk or
+  other component, to be set up.
+
+* Restrictions on the choice of mass and length scale of any component
+  have been eliminated. 
+
+* New mass components include the Einasto halo, and isotropic DFs for
+  both that and the cored isothermal sphere created by Eddington
+  inversion.
+
+* The code now offers a warm disk set up by determining a DF for the
+  disk by the method outlined by Shu (1969) This new capability has
+  not been tested very extensively, and may require tweaks in future.
+
+* 3D Cartesian grid.  I have included a new (f95) version of the
+  Poisson solver on a 3D Cartesian grid that was kindly supplied by
+  Richard James.  This new version of his software eliminates the only
+  remaining arrays that were dimensioned at compilation time in
+  previous versions.  Now all parts of the code use dynamically
+  allocated arrays, which means that the executables provided place no
+  restrictions on either the size of any grid or the number of
+  particles that can be employed.
+
+* Logical unit numbers are now assigned dynamically to ensure
+  then none could ever be muddled for two different files
+
+* Many "go to"s and long calling argument lists have been eliminated
+
+* Two of the larger arrays have been broken into separate pieces
+  making their use a little more understandable.  One consequence of
+  this improvement is that the compiler bug when -O2 optimization is
+  selected for the ifort compiler should have been eliminated (thanks
+  to Matthieu Portail for chasing that down).
+
+* User inputs while running program analys have been improved
+  somewhat.
+  - A list of available components is displayed when the user is asked
+    to select one.
+  - Selecting first, last, and interval is now mostly done in time
+    units, instead of number of time steps.
+  - Added a new option (cntd) is to create color images of the
+    non-axisymmetric density on polar grids
+  - The user also has the option to mark scales on some (but not yet
+    all) plots in physical units
+
+* Plotting: Calls to PGPLOT routines can now be made from the analysis
+  code without the need to interface with routines written by the
+  author, although the older calls also work.
+
+* The approximate expression used in earlier versions to estimate the
+  gravitational potential on the spherical grid has been replaced by
+  the exact expression
+
+
+September 2014  Changes included in v14.10
+
+* Reduced use of NAG: Some progress has been made to eliminate NAG
+  calls when they are not really needed.  If a mass component, either
+  a disk or a halo, is described as unknown, keyword `UNKN', then a
+  number of NAG calls in the set-up procedure and in the analysis
+  package will be skipped, enabling the code to be used more easily by
+  those who lack the NAG libary.
+
+* A generic perturber has been added as an option, which allows the
+  user to program whatever external mass distribution is desired.  All
+  the particles in the code will experience the attraction of this
+  perturber, and the CoM of the perturber will be moved in reaction to
+  the cumulative sum of all the forces experienced by the particles.
+  It is up to the user whether the model also contains frozen mass
+  components that are nailed down, which may not make dynamical sense.
+
+* A table of supplementary correction forces is usually created by
+  program mkpcs.  The improvements here make it possible for the user
+  to create a substitute.
+  - The table is saved in a .stb file by program mkpcs and read back
+    by program pcs2dmp.  It is therefore possible for the user to
+    create his own file of tabulated values that can be read, along
+    with a .pcs file
+  - The radii at which values were tabulated depended on the adopted
+    grid.  This has now been made independent of the grid.
+
+* Fixed a bug in subroutine loadup that prevented multiple populations
+  of particles from being loaded properly
+
+* Output of some text is suppressed except on the master node
+
+
+Jun 25, 2014   Original release (v14.0)

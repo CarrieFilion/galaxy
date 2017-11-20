@@ -1,0 +1,19 @@
+ Setting up           1  components
+
+ Starting component           1
+ Disc type selected is MTZ  index  5
+ Mass of this component 1.0000
+ Radial scale of this component   1.00
+ Truncation radius  6.000 scales
+ Initial Q of disc 1.5000
+ Truncation radius set to    6.00
+
+
+ Mesh size   230   256
+ Sectoral harmonics 0 -  2  will be used
+  Spacing of grid rings is logarithmic
+ Inner and outer edges of grid are at    0.00 and  275.0290 grid units
+ Softening length is  4.000000 grid units
+ Plummer softening rule used
+
+ Reading model parameters in SETRUN

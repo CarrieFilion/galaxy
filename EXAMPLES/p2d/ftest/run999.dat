@@ -1,0 +1,18 @@
+run no           999
+code type        p2d
+#
+grid size         22        64 # mesh dimensions
+HASH              10           # components active
+softl       1.0                # softening length in grid units
+sectors            2           # fraction of 2*pi to contain particles
+skip                           # keep all but named sectoral harmonics
+#
+nzones             3
+#
+Test mass          5
+posn               8        13         1
+posn               3         1        23
+posn               7         2        23
+posn              15        99         3
+posn               5         9         5
+

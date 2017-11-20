@@ -1,0 +1,61 @@
+Welcome to the GALAXY package!  For documentation, go to:
+
+http://www.physics.rutgers.edu/~sellwood/manual.pdf
+
+REQUIREMENTS
+============
+
+This package assumes that you will use the gfortran compiler.  If you
+prefer a different compiler, the gfortran commands in the four files
+SRC/lib15/rebuild, SRC/utils/rebuild, SRC/RAJ/rebuild, and
+SRC/progs/Makefile should be replaced by an equivalent.  Also mpi code
+is compiled with mpif90.  To use a different compiler for this, you
+will need to replace it in two files SRC/lib15_mpi/rebuild and
+SRC/progs/Makefile
+
+The plotting package PGPLOT, which is freely available, will be needed
+to examine the results using analys.
+
+A version of MPI will be needed if you wish to run in parallel.  The
+default is OpenMPI, and the script 'rebuild' in the SRC/lib15_mpi
+directory and the Makefile in the SRC/progs directory will have to be
+edited if a different MPI is installed.
+
+With these available, the package should be self-contained, and all the
+executables should link with no missing externals.
+
+COMPILATION
+===========
+
+The procedure to install the package is described on pp 12-13 of the
+on-line documentation: http://www.physics.rutgers.edu/~sellwood/manual.pdf
+
+You should first create the libraries by running the "rebuild" scripts
+in the various subdirectories of SRC before trying "make" in the
+directory SRC/progs
+
+EXECUTION
+=========
+
+The EXAMPLES sub-directory, with subdirectories c2d/ p2d/ p3d/ c3d/
+p3a/ s3d/ sf2d/ sf3d/ scf/ dr3d/ bht/ heavies/ hybrid/ contains example
+files to illustrate how many options in the code can be used.
+
+Standard tests to reproduce unstable eigenmodes of disks are in p2d/
+and sf2d/  Checks of the force determination are in subdirectories
+ftest/ while those for force anisotropies can be found in the
+subdirectory isotropy/
+
+USING MPI
+=========
+
+To make use of MPI, a small number of subroutines have mpi versions of
+the same names in the directory SRC/lib15_mpi.  Running the script rebuild
+in that directory will create a further object library file
+lib/main15_mpi.a.  The make should also create executables dmp2pcs_mpi,
+galaxy_mpi, pcs2dmp_mpi, and ptest_mpi
+
+These programs will run on single processors, but offer the advantage
+of parallel execution when multiple processors are available.  See
+section 6.5 of the manual.
+

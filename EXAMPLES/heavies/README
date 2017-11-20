@@ -1,0 +1,18 @@
+run100 is an example to illustrate the "heavies" option of the code
+
+The two populations are drawn from the same parent DF: an isotropic
+Plummer sphere which has the full potential of the combined two
+components.  The script run100.s will create two .dfn files:
+run100.df1 having 20K particles and run100.df2 having 100 particles.
+When combined, the mass of each must be smaller than the total, so the
+start-up procedure needs to know that the velocities of each are
+already appropriate for the total potential and should not be
+rescaled.  The script then implements pcs2dmp and galaxy to run this
+case for a short period.  Because the direct-N option is used for the
+heavy particles, this code has not been parallelized.
+
+The model is not in perfect equilibrium because the potential of the
+heavy particles is softened.  Using the supplementary correction
+forces option is not recommended, however, as fixed forces require
+centering the s3d grid to be turned off and also the l=1 term to be
+filtered out!  It is best to just live with the mild disequilibrium.

@@ -1,0 +1,12 @@
+This software was written by Richard James, who holds the copyright
+(see the file Copyright.txt in this directory), and is included as
+part of the GALAXY package under the terms of the Educational
+Community License 1.0.
+
+Many routines in this directory have been modified very slightly by
+Jerry Sellwood, and the changes made to each routine are listed in
+comment lines at the top of each file.
+
+The full package, including a stand-alone driving program, test
+examples, and complete documentation is available from Richard James
+(mailto:r.james@manchester.ac.uk)

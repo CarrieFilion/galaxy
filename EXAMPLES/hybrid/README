@@ -1,0 +1,42 @@
+This directory provides two sample simulations of disk with live halos
+and one bulge, disk, halo model that can be evolved using two
+concentric grids: a cylindrical polar grid for the disk and a
+spherical grid for the halo.
+
+---------
+
+Run99 resembles run MH of Athanassola & Misiriotis (2002).  The
+exponential disk with an isothermal vertical profile (not recommended)
+is represented by 200K particles.  The halo, with density and
+velocities created using Hernquist's (1993) prescription (also not
+recommended), is represented by 1M particles.  The script run99.s sets
+up the model using mkpcs, which takes several minutes to run, and then
+evolves it in parallel using 5 cores.
+
+---------
+
+Run100 uses a much superior method to create an initial equilibrium
+model.  The halo is a low-concentration King model that has been
+compressed by the inclusion of a masive exponential disk.  The script
+run100.s first computes the density profile of the compressed halo
+which takes several minutes of cpu time to converge after ~13
+iterations.  It creates two tables: E0tab.dat and compress.dat that
+should not be deleted as long as the results from the simulation are
+of interest, since they are needed by every executable that advances
+or analyzes the run.  The second step is to draw particles from the DF
+of the compressed halo.  Next, the script uses mkpcs to set up the
+file run100.pcs0.  Finally, the simulation is run in parallel using 5
+cores.
+
+---------
+
+Run200 also uses compress to set up an equilibrium three component
+system of both a bulge and halo in the presence of the disk.  Thus
+there are two compressible components in this model.  A single run of
+compress computes the equilibrium total potential and the compressed
+density profiles of both the bulge and the halo.  Then particles are
+selected from the DF of each component.  After that script sets up the
+simulation and runs it for 50 dynamical times.  In all, the script
+will take 4-5 hours to execute, of which only the first 10% is setting
+up the model.  It will create about 1GB of data in files, the largest
+one of which (run200.grt) is useful only if the run will be continued.

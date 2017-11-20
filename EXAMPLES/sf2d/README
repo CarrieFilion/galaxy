@@ -1,0 +1,7 @@
+Run 100 sets up a isochrone disk having a Kalnajs DF with index 12,
+for which Kalnajs predicts the fundamental bar mode frequency:
+0.59+0.21i.  The script run100.s performs a test of the code using
+that prediction.  Script modefit.s fits a mode to the results file.
+In a recent test with these scripts, I obtained 0.595+0.214i which is
+in satisfactory agreement with the prediction.  It may be possible to
+obtain closer agreement with more particles and other refinements.

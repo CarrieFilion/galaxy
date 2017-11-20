@@ -1,0 +1,2 @@
+The script run100.s sets up an iostropic Plummer sphere and evolves for 
+a short period using the "SCF" method devised by Hernquist & Ostriker.

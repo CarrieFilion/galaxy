@@ -1,0 +1,482 @@
+ Setting up           2  components
+
+ Starting component           1
+ Disc type selected is EXP  index  6
+ Mass of this component 0.5000
+ Radial scale of this component   1.00
+ Truncation radius  5.000 scales
+ DF type selected is SHUE index 26
+ DF constants   1.5000
+
+ Starting component           2
+ Halo type selected is ISOT index  6
+ Halo constant 0.7000
+ Radial scale of this component   1.00
+ Truncation radius 15.000 scales
+ Truncation radius set to   15.00
+
+
+ Mesh size    85   128    75
+ Sectoral harmonics 0 -  8  will be used
+  Spacing of grid rings is logarithmic
+ Linear interpolation
+ Inner and outer edges of grid are at    0.00 and   60.7652 grid units
+ Maximum z distance of grid is   18.50 grid units
+ Softening length is  1.000000 grid units
+ Cubic spline softening rule used
+
+ Reading model parameters in SETRUN
+
+ No guard radii set
+ Grid center fixed
+ No external perturber
+ No supplementary forces
+ Halo velocity field analysis omitted
+ Spherical Bessel function analysis omitted
+ No rings
+ Initial model will not be recentered
+ Center of mass at grid centre
+ No initial net momentum
+ Outer disc density tapered
+ Center of mass at grid centre
+ No initial net momentum
+
+ rigid halo selected for pop           2
+ ptcls length needed    800000
+ Retarded velocity leap-frog scheme selected
+ Zoning instructions:  beyond radius  step factor
+                          10.000         2
+                          25.000         4
+
+ Second order interpolation selected
+ Off-grid particles advanced without being accelerated
+ Population  1 mass is 0.50 represented by   100000 particles
+ Initial scale height of disc  0.10
+  Gaussian vertical profile
+ Particle coordinates expected on file run 200.dfn
+ Population  2 mass is 0.49 represented by        0 particles
+ Length scale is 10.000 grid units
+            Time step is  0.0250
+Self energy of the halo = -1.177144
+ Analysis every  40 steps to save:
+       density transform
+       frequencies at radial spacing   0.050
+       Logarithmic spiral analysis into   4 Fourier harmonics and  61 pitch angles
+       global integrals
+       integrals for    1000 particles
+       angular momentum distribution
+       Disc velocity field analysis into  30 radial and  12 azimuthal bins                with outer boundary at  6.00 scales
+       halo density from every    50th particle
+       z-density profile analysis into  10 radial and  21 vertical bins
+ Points for pictures every 400 steps
+ SETRUN successfully completed
+
+ Checking Green function file header
+
+
+                   Setting up disc particles
+ Reading distribution function header from unit          10
+ Truncation radius set to    5.00
+      100000  particles
+          10  particles for each E & Lz
+      Mass represented by particles =    0.953759
+ h_crit =   0.100
+ Cubic taper in angular momentum from    3.6763 to    3.8560
+  Azimuthal coordinates generated randomly
+ Active mass fraction in cmp 1 is  0.953759
+ Adding fraction 1.00 of masses from zone no 2 step      0
+ Adding fraction 1.00 of masses from zone no 3 step      0
+    100000 particles active at step      0
+ Full grid force determination
+ Checking Green function file header
+ Green fn used from file
+ Found forces and potentials at step      0
+ Parameters for each radial bin:
+      radius    sigma w     kappa_z
+
+       0.050       0.153
+       0.100       0.152
+       0.150       0.151
+       0.200       0.149
+       0.250       0.147
+       0.300       0.144
+       0.350       0.141
+       0.400       0.139
+       0.450       0.136
+       0.500       0.133
+       0.550       0.131
+       0.600       0.128
+       0.650       0.126
+       0.700       0.123
+       0.750       0.120
+       0.800       0.118
+       0.850       0.115
+       0.900       0.113
+       0.950       0.110
+       1.000       0.108
+       1.050       0.105
+       1.100       0.103
+       1.150       0.101
+       1.200       0.099
+       1.250       0.096
+       1.300       0.094
+       1.350       0.092
+       1.400       0.090
+       1.450       0.088
+       1.500       0.086
+       1.550       0.084
+       1.600       0.082
+       1.650       0.080
+       1.700       0.079
+       1.750       0.077
+       1.800       0.075
+       1.850       0.073
+       1.900       0.072
+       1.950       0.070
+       2.000       0.068
+       2.050       0.067
+       2.100       0.065
+       2.150       0.064
+       2.200       0.063
+       2.250       0.061
+       2.300       0.060
+       2.350       0.059
+       2.400       0.057
+       2.450       0.056
+       2.500       0.055
+       2.550       0.054
+       2.600       0.053
+       2.650       0.051
+       2.700       0.050
+       2.750       0.049
+       2.800       0.048
+       2.850       0.047
+       2.900       0.046
+       2.950       0.045
+       3.000       0.044
+       3.050       0.043
+       3.100       0.042
+       3.150       0.042
+       3.200       0.041
+       3.250       0.040
+       3.300       0.039
+       3.350       0.038
+       3.400       0.038
+       3.450       0.037
+       3.500       0.036
+       3.550       0.035
+       3.600       0.035
+       3.650       0.034
+       3.700       0.033
+       3.750       0.033
+       3.800       0.032
+       3.850       0.031
+       3.900       0.031
+       3.950       0.030
+       4.000       0.030
+       4.050       0.029
+       4.100       0.029
+       4.150       0.028
+       4.200       0.028
+       4.250       0.027
+       4.300       0.027
+       4.350       0.026
+       4.400       0.026
+       4.450       0.025
+       4.500       0.025
+       4.550       0.024
+       4.600       0.023
+       4.650       0.023
+       4.700       0.022
+       4.750       0.022
+       4.800       0.021
+       4.850       0.020
+       4.900       0.019
+       4.950       0.019
+       5.000      -0.000
+   Kinetic energy before setorb    0.0000 and after    0.0000
+ Model at rest at coordinate origin
+ Field determination method selected: p3d
+ Setting up           2  components
+
+ Starting component           1
+ Disc type selected is EXP  index  6
+ Mass of this component 0.5000
+ Radial scale of this component   1.00
+ Truncation radius  5.000 scales
+ DF type selected is SHUE index 26
+ DF constants   1.5000
+
+ Starting component           2
+ Halo type selected is ISOT index  6
+ Halo constant 0.7000
+ Radial scale of this component   1.00
+ Truncation radius 15.000 scales
+ Truncation radius set to   15.00
+
+
+ Mesh size    85   128    75
+ Sectoral harmonics 0 -  8  will be used
+  Spacing of grid rings is logarithmic
+ Linear interpolation
+ Inner and outer edges of grid are at    0.00 and   60.7652 grid units
+ Maximum z distance of grid is   18.50 grid units
+ Softening length is  1.000000 grid units
+ Cubic spline softening rule used
+
+ Reading model parameters in SETRUN
+
+ No guard radii set
+ Grid center fixed
+ No external perturber
+ No supplementary forces
+ Halo velocity field analysis omitted
+ Spherical Bessel function analysis omitted
+ No rings
+ Initial model will not be recentered
+ Center of mass at grid centre
+ No initial net momentum
+ Outer disc density tapered
+ Center of mass at grid centre
+ No initial net momentum
+
+ rigid halo selected for pop           2
+ ptcls length needed    800000
+ Retarded velocity leap-frog scheme selected
+ Zoning instructions:  beyond radius  step factor
+                          10.000         2
+                          25.000         4
+
+ Second order interpolation selected
+ Off-grid particles advanced without being accelerated
+ Population  1 mass is 0.50 represented by   100000 particles
+ Initial scale height of disc  0.10
+  Gaussian vertical profile
+ Particle coordinates expected on file run 200.dfn
+ Population  2 mass is 0.49 represented by        0 particles
+ Length scale is 10.000 grid units
+            Time step is  0.0250
+Self energy of the halo = -1.177144
+ Analysis every  40 steps to save:
+       density transform
+       frequencies at radial spacing   0.050
+       Logarithmic spiral analysis into   4 Fourier harmonics and  61 pitch angles
+       global integrals
+       integrals for    1000 particles
+       angular momentum distribution
+       Disc velocity field analysis into  30 radial and  12 azimuthal bins                with outer boundary at  6.00 scales
+       halo density from every    50th particle
+       z-density profile analysis into  10 radial and  21 vertical bins
+ Points for pictures every 400 steps
+ SETRUN successfully completed
+
+ Checking Green function file header
+
+
+                   Setting up disc particles
+ Adding fraction 1.00 of masses from zone no 2 step      0
+ Adding fraction 1.00 of masses from zone no 3 step      0
+    100000 particles active at step      0
+ Full grid force determination
+ Checking Green function file header
+ Green fn used from file
+ Found forces at step      0
+ Time-centering velocities
+ Adding fraction 1.00 of masses from zone no 2 step      0
+ Adding fraction 1.00 of masses from zone no 3 step      0
+    100000 particles active at step      0
+ Dumping    100000 particles in groups of  5000
+ Field determination method selected: p3d
+ Setting up           2  components
+
+ Starting component           1
+ Disc type selected is EXP  index  6
+ Mass of this component 0.5000
+ Radial scale of this component   1.00
+ Truncation radius  5.000 scales
+ DF type selected is SHUE index 26
+ DF constants   1.5000
+
+ Starting component           2
+ Halo type selected is ISOT index  6
+ Halo constant 0.7000
+ Radial scale of this component   1.00
+ Truncation radius 15.000 scales
+ Truncation radius set to   15.00
+
+
+ Mesh size    85   128    75
+ Sectoral harmonics 0 -  8  will be used
+  Spacing of grid rings is logarithmic
+ Linear interpolation
+ Inner and outer edges of grid are at    0.00 and   60.7652 grid units
+ Maximum z distance of grid is   18.50 grid units
+ Softening length is  1.000000 grid units
+ Cubic spline softening rule used
+
+ Reading model parameters in SETRUN
+
+ No guard radii set
+ Grid center fixed
+ No external perturber
+ No supplementary forces
+ Halo velocity field analysis omitted
+ Spherical Bessel function analysis omitted
+ No rings
+ Initial model will not be recentered
+ Center of mass at grid centre
+ No initial net momentum
+ Outer disc density tapered
+ Center of mass at grid centre
+ No initial net momentum
+
+ rigid halo selected for pop           2
+ ptcls length needed    800000
+ Retarded velocity leap-frog scheme selected
+ Zoning instructions:  beyond radius  step factor
+                          10.000         2
+                          25.000         4
+
+ Second order interpolation selected
+ Off-grid particles advanced without being accelerated
+ Population  1 mass is 0.50 represented by   100000 particles
+ Initial scale height of disc  0.10
+  Gaussian vertical profile
+ Particle coordinates expected on file run 200.dfn
+ Population  2 mass is 0.49 represented by        0 particles
+ Length scale is 10.000 grid units
+            Time step is  0.0250
+Self energy of the halo = -1.177144
+ Analysis every  40 steps to save:
+       density transform
+       frequencies at radial spacing   0.050
+       Logarithmic spiral analysis into   4 Fourier harmonics and  61 pitch angles
+       global integrals
+       integrals for    1000 particles
+       angular momentum distribution
+       Disc velocity field analysis into  30 radial and  12 azimuthal bins                with outer boundary at  6.00 scales
+       halo density from every    50th particle
+       z-density profile analysis into  10 radial and  21 vertical bins
+ Points for pictures every 400 steps
+ SETRUN successfully completed
+
+ Checking Green function file header
+
+
+ Mesh size    85   128    75
+ Sectoral harmonics 0 -  8  will be used
+  Spacing of grid rings is logarithmic
+ Linear interpolation
+ Inner and outer edges of grid are at    0.00 and   60.7652 grid units
+ Maximum z distance of grid is   18.50 grid units
+ Softening length is  1.000000 grid units
+ Cubic spline softening rule used
+    100000 particles in  2 populations
+Pop  1 has mass  0.50 and scale length  1.00 grid units
+Pop  2 has mass  0.49 and scale length  1.00 grid units
+           Time unit     0.025
+ Active sectoral harmonics are:
+       0       2       3       4       5       6       7       8
+ Checking Green function file header
+ Green fn used from file
+ starting step no            4
+ starting step no            8
+ starting step no           12
+ starting step no           16
+ starting step no           20
+ starting step no           24
+ starting step no           28
+ starting step no           32
+ starting step no           36
+ starting step no           40
+ starting step no           44
+ starting step no           48
+ starting step no           52
+ starting step no           56
+ starting step no           60
+ starting step no           64
+ starting step no           68
+ starting step no           72
+ starting step no           76
+ starting step no           80
+ starting step no           84
+ starting step no           88
+ starting step no           92
+ starting step no           96
+ starting step no          100
+ starting step no          104
+ starting step no          108
+ starting step no          112
+ starting step no          116
+ starting step no          120
+ starting step no          124
+ starting step no          128
+ starting step no          132
+ starting step no          136
+ starting step no          140
+ starting step no          144
+ starting step no          148
+ starting step no          152
+ starting step no          156
+ starting step no          160
+ starting step no          164
+ starting step no          168
+ starting step no          172
+ starting step no          176
+ starting step no          180
+ starting step no          184
+ starting step no          188
+ starting step no          192
+ starting step no          196
+ starting step no          200
+ starting step no          204
+ starting step no          208
+ starting step no          212
+ starting step no          216
+ starting step no          220
+ starting step no          224
+ starting step no          228
+ starting step no          232
+ starting step no          236
+ starting step no          240
+ starting step no          244
+ starting step no          248
+ starting step no          252
+ starting step no          256
+ starting step no          260
+ starting step no          264
+ starting step no          268
+ starting step no          272
+ starting step no          276
+ starting step no          280
+ starting step no          284
+ starting step no          288
+ starting step no          292
+ starting step no          296
+ starting step no          300
+ starting step no          304
+ starting step no          308
+ starting step no          312
+ starting step no          316
+ starting step no          320
+ starting step no          324
+ starting step no          328
+ starting step no          332
+ starting step no          336
+ starting step no          340
+ starting step no          344
+ starting step no          348
+ starting step no          352
+ starting step no          356
+ starting step no          360
+ starting step no          364
+ starting step no          368
+ starting step no          372
+ starting step no          376
+ starting step no          380
+ starting step no          384
+ starting step no          388
+ starting step no          392
+ starting step no          396
+ starting step no          400
+ Dumping    100000 particles in groups of  5000

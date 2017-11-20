@@ -1,0 +1,29 @@
+#!/bin/sh
+# set up a smooth particle disk with circular orbits
+smooth << eof
+0
+1 # 2 mass component
+y # this is a disk
+soft # disk type following off of Athanassoula & Sellwood
+1 # mass (units M, Galaxy manual recommends 1)
+1 # length scale (1 is also reccomended here)
+lia #(DF, tbh picked it bc it also said Athanassoula and Sellwood)
+100 30 20 # number of particles, one o.o.m off
+y #equal particle mass
+0 #random speed
+eof
+mv lia.dfn run100.dfn
+# create the .pcs file
+mkpcs << eof 
+400   # run number
+eof
+# create the .dmp file(s) ready for galaxy
+pcs2dmp << eof
+400   # run number
+0     # time of .pcs file
+eof
+# run galaxy
+galaxy << eof
+400   # run number
+0     # time of .dmp file
+eof

@@ -1,0 +1,47 @@
+run no           100
+code             sf3
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type              kt           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0       6.0     # length scale and truncation radius of this pop
+dftype         kaln    6.0     # DFtype
+lzcrit       0.2
+taper             f            # no additional taper needed
+#
+# data for SFPSET
+Bessel      .5                 # basis choice and delta k
+softl       .05                # softening length
+minm maxm minn maxn            # basis functions to be used
+   2    2    0   20            # m, n = number of radial, azimuthal functions
+nrtab           101            # number of radii to tabulate functions
+planes           21    0.1     # number of planes and z-spacing
+sectors            2           # fraction of 2pi containing particles
+#
+time step     0.05             # for shortest zone
+zones              3           # number of zones
+                   2   2.0     # step ratio and radius of zone boundary
+                   4   4.0     # step ratio and radius of zone boundary
+lscale        1.0              # no grid units for SFP
+#
+icmp               1
+npar           10000           # number of particles in the disc
+start        t   f   f         # logicals for dist, smr & quiet
+z0in          0.1              # initial disk thickness
+end data for pop 1
+#
+analysis          20           # step interval
+plot             500       100 # buffer size and time interval for pictures
+dvel fld           5        12 # radial then azimuthal bins
+lgsp              61         1 # np then nm
+rhor              10           # stride through sorted disk particles
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+#
+end                            last data card
+last step       1000

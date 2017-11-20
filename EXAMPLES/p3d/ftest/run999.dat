@@ -1,0 +1,21 @@
+run no           999
+code type        p3d
+#
+grid size         22        64        45 # mesh dimensions ( nr, na, nz )
+z spacing   0.25               # in grid units
+HASH              11           # components active
+#power law   1.0                # 1 for logarithmic
+#uoffs             10           # no of divisions inside r=1
+softl       1.0    2           # softening length in grid units
+sectors            1           # fraction of 2*pi to contain particles
+skip                           # list sectoral harmonics to skip
+#
+nzones             3
+#
+Test mass          5
+posn              15        99         3
+posn               8        13         1
+posn               3         1        23
+posn               7         2        23
+posn               5         9        45
+

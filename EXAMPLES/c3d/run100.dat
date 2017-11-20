@@ -1,0 +1,48 @@
+run no           100
+# This is not a great test case because the model is not in very good
+#   initial equilibrium.  The imbalance is due to the vertical motion, since
+#   a razor thin disk with everything else unchanged is in equilibrium.
+grid type        c3d
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type            soft  0.05     # type keyword
+mass         1.0               # mass in this pop
+scale        1.0      5.0      # length scale and truncation radius of this pop
+dftype          kaln  10       # DFtype
+lzcrit       0.2               # parameter to introduce some retrograde stars
+taper              t  4.0      # set outer taper
+#
+# instructions for c3d
+#
+grid size        129       129       33 # mesh dimensions
+shape           1.       1.      1.     # cubic cells
+#
+# instructions for setrun
+#
+time step    0.05              # in natural units
+zones              1           # number of zones
+lscale        12.0             # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+suppl              t           # turn on supplementary forces
+#
+icmp               1
+npar           20000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+z0init           0.1    2
+end data for pop 1
+#
+analysis          10         1 # step interval
+moni               2           # monitor 50% of the particles
+lgsp              61         4 # log spiral analysis
+plot             100           # time interval for pictures
+dvel fld           5        12 # radial then azimuthal bins
+rhor              50           # stride through sorted halo particles
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+dnst
+intg
+end of results file instructions
+end                            # last data card
+last step        100

@@ -1,0 +1,37 @@
+This directory contains two illustrative simulations using the 3D
+polar grid.
+
+Run 999 is a disk+bulge model.  The script run999.s first determines
+an equilibrium DF and potential for the bulge using dfiter, then
+selects particles from the equilibrium DF of the bulge, runs mkpcs to
+set up the .pcs0 file, and then runs the model for a short period.
+
+Run 200 is a low-mass disk in rigid a cored isothermal halo.  The
+script run200.s uses smooth to create a Shu DF for the disk and then
+to select particles from the DF, then runs mkpcs to create the model,
+followed by pcs2dmp_mpi and then galaxy_mpi to run it for a short
+period.
+
+Following up the execution of this script with an interactive run of
+progam analys will allow the user to see the effects of a few mild
+multi-arm spiral patterns, as the model is halo-dominated, but at
+least it should be clear that the model is close to equilibrium.
+
+The script clean.s tidies up the files created by run200.s only.
+Intermediate files that were created that can be deleted, or
+consolidated if needed.  After every 25 analysis steps, galaxy_mpi
+creates a new set of run200.IdmpT files, with 0 <= I <= 4 because the
+MPI version used here employed 5 cores.  The script clean.s converts
+these intermediate run200.IdmpT files to "snapshot" type run200.pcsT
+files and deletes the no longer needed intermediate run200.IdmpT
+files.  The files run200.grt and run200.flg are deleted as they are no
+longer needed.
+
+If the user wishes to continue the simulation, the run200.Idmp100
+files will be needed, and they are therefore not deleted in this
+script.  Before running galaxy_mpi to continue evolution, the value
+given in the "last step" line of the run200.dat file will need to be
+increased, else the run will stop again after just a single step.
+
+The snapshot files created by clean.s are not needed in the GALAXY
+package, but may be of interest to the user.

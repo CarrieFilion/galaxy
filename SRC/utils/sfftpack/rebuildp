@@ -1,0 +1,24 @@
+#!/bin/sh
+# remove old version
+rm -f ../sfftpakp.a
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+# work through list of files
+for i in `cat aab`
+do
+  pgf77 -c -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+  else
+    echo "done" ${i}
+  fi
+done
+# create new version of archive
+ar r ../sfftpakp.a *.o
+ranlib ../sfftpakp.a
+# clean up
+rm -f *.o
+rm -f aab

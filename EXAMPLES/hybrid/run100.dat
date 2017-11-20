@@ -1,0 +1,77 @@
+run no           100
+# run to create a long bar in a live halo for Juntai
+grid type        hyb         2
+1st type         p3d
+2nd type         s3d
+#
+ncom               2           # number of distinct components
+#
+disc               t           # disc t/f
+type            exp            # type keyword
+mass         1.                # mass in this pop
+scale        1.0       5.0     # length scale and truncation radius of this pop
+dftype        none     1.5     # initial Q
+taper             t    4.5     #
+#
+disc               f           # disc t/f
+type            adia           # type keyword
+mass         8.0               # mass in this pop
+scale       10.0       5.0     # length scale and truncation radius of this pop
+dftype          comp           # DFtype
+#
+# grids
+#
+grid size         84       128       225 # mesh dimensions
+z spacing   0.1                # in grid units
+HASH               8           # highest azimuthal sectoral harmonic
+softl       1.0                # softening length in grid units
+sect               1           # order of rotational symmetry imposed
+skip                           # put 0 here to use fixed radial forces
+# 
+grid size        301   501.0   # mesh size and rmax
+lmax               4           # value of lmax
+#
+# instructions for setrun
+#
+time step    0.0125            # in natural units
+zones              5           # number of zones
+                   2   2.0     # step ratio and radius of zone boundary
+                   4   4.0     # step ratio and radius of zone boundary
+                   8   8.0     # step ratio and radius of zone boundary
+                  16  16.0     # step ratio and radius of zone boundary
+lscale            10           # length scaling from model to grid units
+offgrid            t  f  f   f # switches to inc ptcls in analysis and forces
+uqmass             t           # individual particle masses
+cntd              16           # recenter grid at this step interval
+#
+icmp               1
+pgrd               1           # grid number for this population
+npar         2000000           # number of particles in this pop
+mass         1.                # mass in this pop
+start        f   f   f         # logicals for dist, smr & quiet
+z0init       0.03            1 # initial thickness of population and isothermal
+end data for pop 1
+#
+icmp               2
+pgrd               2           # grid number for this population
+npar         2500000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+z0init      1.0                # 1 for s sphere
+end data for pop 2
+#
+analysis          80         1 # step interval
+# moni            100           # monitor 1% of the particles
+plot            3000       400 # buffer size and time interval for pictures
+hvel fld           5        15 # radial then vertical bins
+dvel fld           5        12 # vel moment bins - radial then azimuthal
+lgsp              61         4 # 
+#sphb               6         4 # number of sph. Bess. coeffs (nn, nl)
+rhor             500           # stride through sorted halo particles
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+danl
+end of results file instructions
+end                            # last data card
+last step      800

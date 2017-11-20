@@ -1,0 +1,76 @@
+run no            99
+# rerun of Athanassoula & Misiriotis run MH
+grid type        hyb         2
+1st type         p3d
+2nd type         s3d
+#
+ncom               2           # number of distinct components
+#
+disc               t           # disc t/f
+type            exp            # type keyword
+mass         1.                # mass in this pop
+scale        1.0       7.5     # length scale and truncation radius of this pop
+dftype        none     0.9     # initial Q
+taper             t    7.0     #
+#
+disc               f           # disc t/f
+type            isog  0.05     # type keyword
+mass         5.                # mass in this pop
+scale       10.0      15.0     # length scale and truncation radius of this pop
+dftype        jean             # DFtype
+#
+# grids
+#
+grid size        180       256       125 # mesh dimensions
+z spacing   0.2                          # in grid units
+HASH               8                     # highest active sectoral harmonic
+softl       0.5    2                     # softening length in grid units
+sect               1           # order of rotational symmetry imposed
+skip                           # list of sectoral harmonics to skip
+# 
+grid size       1001  1550.0   # mesh size and rmax
+lmax               4           # value of lmax
+#
+# instructions for setrun
+#
+time step    0.0125            # in natural units
+zones              5           # number of zones
+                   2   2.0     # step ratio and radius of zone boundary
+                   4   4.0     # step ratio and radius of zone boundary
+                   8   8.0     # step ratio and radius of zone boundary
+                  16  16.0     # step ratio and radius of zone boundary
+lscale            10           # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+cntd              16           # recenter grid at this step interval
+uqmass             t           # unequal particle masses
+#
+icmp               1
+pgrd               1           # grid number for this population
+npar          100000           # number of particles in this pop
+start        f   f   f         # logicals for dist, smr & quiet
+z0init       0.05            1 # initial thickness of population and isothermal
+end data for pop 1
+#
+icmp               2
+pgrd               2           # grid number for this population
+npar         100000           # number of particles in this pop
+start        f   f   f         # logicals for dist, smr & quiet
+z0init      1.0                # 1 for s sphere
+end data for pop 2
+# 
+analysis          80         1 # step interval
+# moni            100           # monitor 1% of the particles
+plot              400          # buffer size and time interval for pictures
+hvel fld           5        15 # radial then vertical bins
+dvel fld           5        12 # vel moment bins - radial then azimuthal
+lgsp              61         4 # 
+#sphb               6         4 # number of sph. Bess. coeffs (nn, nl)
+rhor             500           # stride through sorted halo particles
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+danl
+end of results file instructions
+end                            # last data card
+last step       8000

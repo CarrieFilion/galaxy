@@ -1,0 +1,28 @@
+#!/bin/sh
+# remove old version
+rm -f ../main15_mpi.a
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+echo "this will take a few seconds"
+# work through list of files
+for i in `cat aab`
+do
+  mpif90 -c -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# build the library
+ar r ../main15_mpi.a *.o
+ranlib ../main15_mpi.a
+chmod go+r ../main15_mpi.a
+# tidy up
+rm -f *.o
+rm -f aab
+rm -f *.mod
+mv ../main15_mpi.a ../../lib

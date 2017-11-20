@@ -1,0 +1,40 @@
+run no           100
+grid type        s3d
+#
+ncom               1           # number of distinct components
+#
+disc               f           # disc t/f
+type            unis           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0               # length scale and truncation radius of this pop
+dftype         usps            # DFtype
+# 
+# instructions for s3d
+#
+grid size        501    1.5    # mesh size and rmax
+lmax              30           # value of lmax
+sect               1           # order of rotational symmetry imposed
+skip                           # list of sectoral harmonics to skip
+#
+# instructions for setrun
+#
+time step    1.                # in natural units
+zones              1           # number of zones
+lscale         1.0             # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+#
+icmp               1
+npar               1           # number of particles in this pop
+start        f   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+# 
+analysis           5         1 # step interval
+moni              10           # monitor 10% of the particles
+plot            3000      5000 # buffer size and time interval for pictures
+hvel fld          33        15 # radial then vertical bins
+rhor              50           # stride through sorted halo particles
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step        21

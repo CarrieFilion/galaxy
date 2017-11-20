@@ -1,0 +1,42 @@
+ Setting up            1  components
+ 
+ Starting component            1
+ Halo type selected is UNIS index  3
+ Mass of this component 1.0000
+ Radial scale of this component   1.00
+ DF type selected is USPS index 27
+
+   501 radial grid points.  Outermost is at    1.50
+Force terms up to l=30
+
+ Reading model parameters in SETRUN
+ 
+ Particles assumed to all have the same mass
+ No guard radii set
+ Grid center fixed
+ No external perturber
+ No supplementary forces
+ Angular momentum binning omitted
+ Spherical Bessel function analysis omitted
+ No rings
+ Initial model will not be recentered
+ Center of mass at grid centre
+ No initial net momentum
+ 
+ ptcls length needed         8
+ Retarded velocity leap-frog scheme selected
+ All particles have the same time step
+ Second order interpolation selected
+ Off-grid particles advanced without being accelerated
+ Population  1 mass is 1.00 represented by        1 particles
+ Length scale is  1.000 grid units
+            Time step is  1.0000
+ Analysis every   5 steps to save:
+       global integrals
+       integrals for       1 particles
+       Halo velocity field analysis into  39 radial and  15 vertical bins
+with radial and vertical boundaries at  1.212  0.455 scales
+       halo density from every    50th particle
+ Points for pictures every3000 steps
+ SETRUN successfully completed
+ 

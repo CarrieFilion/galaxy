@@ -1,0 +1,29 @@
+The files in this directory are to set up and evolve a simple two-body
+system - two equal mass particles in circular orbits about their
+common center of mass - as a test of the galaxy code.  The source
+files binary.f and analys.f should be compiled and linked with the
+other single-processor libraries of the package.  The resulting
+executable will run with any of the five .dat files in this directory,
+which each use a different grid:
+
+run201 is for P2D, run221 for C2D, run301 is for P3D, run321 for C3D,
+and run341 for S3D
+
+The binary orbit is offset from the grid center and, in 3D, is tipped
+with respect to the grid planes.
+
+When compiled, the version of analys in this directory will plot the
+orbit using the 'pnts' option.  The 'intg' option will show how well
+global integrals are conserved - the plots of variations are scaled so
+as to reveal the changes, which should be small.
+
+This is a strong test for programming or implementation blunders.  If
+all is well, the orbit should be circular, the virial ratio close to
+0.5, and total energy, and linear and angular momentum should be
+approximately conserved.  This is a particularly challenging test for
+the spherical expansion code, since the expansion must be taken to
+high order (lmax=32) to obtain forces that are a good approximation to
+those of point masses, but then force discontinuities as the particles
+cross in radius, which are exacerbated at high order, are not fully
+masked by grid interpolation.  Nevertheless, the results are
+satisfactory when using the supplied run341.dat file.

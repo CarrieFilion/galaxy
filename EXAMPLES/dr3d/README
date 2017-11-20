@@ -1,0 +1,6 @@
+The script mkpcs.s will create the initial run100.pcs0 file containing
+1K particles selected from an isotropic Plummer sphere.
+
+The script run.s implements pcs2dmp and then galaxy to run this case
+for a short period using a direct-N code.  This code has not been
+parallelized.

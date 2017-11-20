@@ -1,0 +1,42 @@
+run no           100
+grid type        bht
+#
+ncom               1           # number of distinct components
+#
+disc               f           # disc t/f
+type            plum           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0       5.0     # length scale and truncation radius of this pop
+dftype          dejo   0.0     # dftype and parameter
+#
+# instructions for bht
+#
+softl         0.125          2 # softening length in grid units
+tole          0.7              # tolerance - recommend 0.6
+#
+# instructions for setrun
+#
+time step    0.05              # in natural units
+zones              1           # number of zones
+lscale             1           # length scaling from model to grid units
+offgrid            t   f  f  f # switches to inc ptcls in analysis and forces
+uqmass             f           # individual particle masses
+#
+icmp               1
+npar           10000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis          20         1 # step interval
+moni              20           # monitor 100/n% of the particles
+plot            3000       400 # buffer size and time interval for pictures
+hvel fld           5        12 # vel moment bins - radial then azimuthal
+rhor              10           # stride through sorted particles
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step        40
+last step       400

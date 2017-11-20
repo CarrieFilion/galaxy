@@ -1,0 +1,32 @@
+
+
+ Mesh size    22    64    45
+ Sectoral harmonics 0 - 11  will be used
+  Spacing of grid rings is logarithmic
+ Linear interpolation
+ Inner and outer edges of grid are at    0.00 and    6.8591 grid units
+ Maximum z distance of grid is    5.50 grid units
+ Softening length is  1.000000 grid units
+ Cubic spline softening rule used
+ Writing Green function file header
+ Writing Green function file header
+ Green function creation complete
+ nzones =  3
+ ptcls length needed         8
+         5 test masses
+ Position   15   64    3 zone  3
+ Position    8   13    1 zone  2
+ Position    3    1   23 zone  1
+ Position    7    2   23 zone  2
+ Position    5    9   45 zone  2
+ Checking Green function file header
+ Green function used from file
+ Checking Green function file header
+
+ Field type  Max abs error   r   z   t  values
+         1     0.95367E-06  11  23   2  -1.108791590  -1.108790636
+         2     0.95367E-06   4   1   1   0.636240482   0.636239529
+         3     0.53644E-06   2  22  50   0.466116756   0.466117293
+         4     0.28610E-05   8  23   8  -2.806601524  -2.806598663
+ Result on master node
+ Fields on all other nodes are identical

@@ -1,0 +1,62 @@
+run no           100
+code             two    2
+code             s3d           # 1st force method
+code            dr3d           # 2nd force method
+#
+ncom               2
+#
+disc               f           # not a disc
+type            plum 
+mass         0.9               # mass in this population
+scale        1.0         6.    # length scale and truncation radius
+dftype          dejo     0.    # isotropic DF
+#
+disc               f           # not a disc
+type            plum
+mass         0.1               # mass in this population
+scale        1.0         6.    # length scale and truncation radius
+dftype          dejo     0.    # isotropic DF
+#
+# instructions for s3d
+grid size        301    7.      # grid size and rmax
+lmax               4           # value of lmax
+sect               1           # order of rotational symmetry imposed
+skip                           # turn on/off fixed radial forces
+#
+softl       0.1                # particle softening length
+#
+time step     0.005            # for shortest zone
+zones              1           # number of zones
+lscale        1.0              # scaling to grid units
+offgrid            t  f  f  f  # switches to inc ptcls in analysis and forces
+uqmass             t           # individual particle masses
+cntd              16           # recenter grid at this step interval
+#
+icmp               1
+pgrd               1
+npar           20000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+z0init       1.0               # 1 for a sphere
+end data for cmpt 1
+#
+icmp               2
+pgrd               2
+npar             100           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+z0init       1.0               # 1 for a sphere
+end data for cmpt 2
+#
+analysis          80           # step interval
+plot             800           # time interval for pictures
+hvel fld           5        15 # radial then vertical bins
+#sphb               6         4 # number of sph. Bess. coeffs (nn, nl)
+rhor              10           # stride through sorted halo particles
+moni              10           # monitor 10% of the particles
+hbins            100           # number of ang mom bins
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+#
+end                            last data card
+last step        800

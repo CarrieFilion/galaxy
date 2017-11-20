@@ -1,0 +1,51 @@
+run no           100
+code type        p2d
+#
+# This data file is needed for the standard test of the dominant m=2 mode
+#   of the cold & minimally softened Kuzmin-Toomre disc.  The predicted
+#   eigenfrequency is 0.540+0.158i which should be reproducible to a
+#   precision of ~1% with these parameters
+#
+ncom               1           # number of distinct components
+#
+disc               t           # disc t/f
+type            soft   0.367879 # type keyword
+mass         1.                # mass in this pop
+scale        1.0       8.0     # length scale and truncation radius of this pop
+dftype        kaln   999.      # 
+lzcrit       0.0               # 0 for no retrograde stars
+taper             f            #
+#
+grid size         93       128 # mesh dimensions
+HASH               2           # highest active sectoral harmonic
+softl       3.67879            # softening length in grid units
+sectors            2           # fraction of 2*pi to contain particles
+skip            0              # turn off fixed radial forces
+#
+time step     0.02             # for shortest zone
+zones              2           # number of zones
+                   2   3.0     # step ratio and radius of zone boundary
+lscale            10           # length scaling from model to grid units
+offgrid            t  f  f   f # switches to inc ptcls in analysis and forces
+uqmass             f           # individual particle masses
+#
+icmp               1
+npar           15000           # number of particles in this pop
+start        t   f   t         # logicals for dist, smr & quiet
+end data for pop 1
+#
+analysis          20           # step interval
+plot             500           # time interval for pictures
+dvel fld           5        12 # radial then azimuthal bins
+lgsp              61         1 # np then nm
+hbins            100           # number of ang mom bins
+rhor             150           # density profile from particles and stride
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+danl
+intg
+lval
+end of results file instructions
+#
+end                            last data card
+last step       4000

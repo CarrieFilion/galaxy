@@ -1,0 +1,116 @@
+#!/bin/sh
+# remove old version
+rm -f ../../lib/libutils.a
+cd quadpack
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+echo "this will take a few seconds"
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -c -w -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# add to archive
+ar r ../../../lib/libutils.a *.o
+# clean up
+rm -f *.o
+rm -f aab
+#
+cd ../cmlib
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -c -w -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# add to archive
+ar r ../../../lib/libutils.a *.o
+# clean up
+rm -f *.o
+rm -f aab
+#
+cd ../Burkardt
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -c -w -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# add to archive
+ar r ../../../lib/libutils.a *.o
+# clean up
+rm -f *.o
+rm -f aab
+#
+cd ../sfftpack
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -c -w -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# add to archive
+ar r ../../../lib/libutils.a *.o
+# clean up
+rm -f *.o
+rm -f aab
+#
+cd ../lapack
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -c -w -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+#
+gfortran -O -c iparam2stage.F
+# add to archive
+ar r ../../../lib/libutils.a *.o
+# clean up
+rm -f *.o
+rm -f aab
+ranlib ../../../lib/libutils.a

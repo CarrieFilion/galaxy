@@ -1,0 +1,9 @@
+      SUBROUTINE SZFFTI (N,WSAVE)
+      IMPLICIT REAL (A-H,O-Z)
+      DIMENSION       WSAVE(1)
+      IF (N .EQ. 1) RETURN
+      IW1 = N+N+1
+      IW2 = IW1+N+N
+      CALL SCFFTI1 (N,WSAVE(IW1),WSAVE(IW2))
+      RETURN
+      END

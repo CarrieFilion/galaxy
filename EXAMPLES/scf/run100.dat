@@ -1,0 +1,46 @@
+run no           100
+grid type        scf
+#
+ncom               1           # number of distinct components
+#
+disc               f           # disc t/f
+type            plum           # type keyword
+mass         1.0               # mass in this pop
+scale        1.0      10.0     # length scale and truncation radius of this pop
+dftype         dejo    0.0     # DFtype and const
+# 
+# instructions for scf
+#
+plummer      11.0              # basis set and outer radius
+lmax               4           # value of lmax
+nmax              10           # value of nmax
+sect               1           # order of rotational symmetry imposed
+skip                           # list of sectoral harmonics to skip
+#
+# instructions for setrun
+#
+time step    0.02              # in natural units
+zones              3           # number of zones
+                   2   1.0     # step ratio and radius of zone boundary
+                   4   2.5     # step ratio and radius of zone boundary
+lscale         1.0             # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+cntd               8           # recenter grid at this step interval
+#
+icmp               1
+npar           10000           # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+end data for pop 1
+# 
+analysis          16         1 # step interval
+moni              10           # monitor 10% of the particles
+plot              20           # buffer size and time interval for pictures
+hvel fld           5        15 # radial then vertical bins
+rhor              50           # stride through sorted halo particles
+sphb               4        10 # spherical Bessel fn analysis
+frqs              20           # number/lscale in table of frequencies 
+save                           # further instructions for results file
+intg
+end of results file instructions
+end                            # last data card
+last step         96

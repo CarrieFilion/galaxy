@@ -1,0 +1,39 @@
+#!/bin/sh
+# remove old version
+rm -f ../main15.a
+# get names of all fortran files in this directory
+ls *.f > aaa
+# remove suffix ".f" from all
+cut -d. -f1 aaa > aab
+rm -f aaa
+echo "this will take a minute or so"
+# work through list of files
+for i in `cat aab`
+do
+  gfortran -w -c -O ${i}.f
+  if [ "$?" != 0 ] ; then
+    echo ${i} "failed"
+#  else
+#    echo "done" ${i}
+  fi
+done
+# recompile without optimization because of compiler problem
+gfortran -c gmisph.f
+gfortran -c phihal.f
+gfortran -c p3fsyn.f
+# rebuild the library and clean up
+ar r ../main15.a *.o
+rm -f *.o
+rm -f aab
+rm -f *.mod
+# add C files
+cd cfiles
+gcc -c cread.c -o cread.o
+ar r ../../main15.a cread.o
+gcc -c cwrite.c -o cwrite.o
+ar r ../../main15.a cwrite.o
+rm -f *.o
+cd ..
+ranlib ../main15.a
+chmod go+r ../main15.a
+mv ../main15.a ../../lib

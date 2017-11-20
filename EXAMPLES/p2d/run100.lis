@@ -1,0 +1,75 @@
+ Setting up           1  components
+
+ Starting component           1
+ Disc type selected is SOFT index  3
+ Softening parameter 0.3679
+ Mass of this component 1.0000
+ Radial scale of this component   1.00
+ Truncation radius  8.000 scales
+ DF type selected is KALN index  2
+ DF constants 999.0000
+ Truncation radius set to    8.00
+
+
+ Mesh size    93   128
+ Sectoral harmonics 0 -  2  will be used
+  Spacing of grid rings is logarithmic
+ Inner and outer edges of grid are at    0.00 and   90.4726 grid units
+ Softening length is  3.678790 grid units
+ Plummer softening rule used
+
+ Reading model parameters in SETRUN
+
+ No guard radii set
+ Grid center fixed
+ No external perturber
+ No supplementary forces
+ Disk bending analysis omitted
+ Particle monitoring option omitted
+ Disk z-profile option omitted
+ No rings
+ Center of mass at grid centre
+ No initial net momentum
+ Sharp disc truncation
+
+ ptcls length needed     90000
+ Retarded velocity leap-frog scheme selected
+ Zoning instructions:  beyond radius  step factor
+                          30.000         2
+
+ Second order interpolation selected
+ Off-grid particles advanced without being accelerated
+ Population  1 mass is 1.00 represented by    15000 particles
+ Particle coordinates expected on file run 100.dfn
+     2-fold symmetry imposed
+ Length scale is 10.000 grid units
+            Time step is  0.0200
+ Analysis every  20 steps to save:
+       density transform
+       frequencies at radial spacing   0.050
+       Logarithmic spiral analysis into   1 Fourier harmonics and  61 pitch angles
+       global integrals
+       angular momentum distribution
+       Disc velocity field analysis into  45 radial and  12 azimuthal bins                with outer boundary at  9.00 scales
+       halo density from every   150th particle
+ Points for pictures every 500 steps
+ SETRUN successfully completed
+
+ Checking Green function file header
+
+
+                   Setting up disc particles
+ Reading distribution function header from unit          10
+        5000  particles
+      Mass represented by particles =    0.857301
+ h_crit =   0.000
+ Sharp cut-off in angular momentum at    2.7680
+       3 Particles placed evenly on each ring
+ Active mass fraction in cmp 1 is  0.857301
+ Adding fraction 1.00 of masses from zone no 2 step      0
+     15000 particles active at step      0
+ Full grid force determination
+ Checking Green function file header
+ Green fn used from file
+ Found forces and potentials at step      0
+ Model at rest at coordinate origin

@@ -1,0 +1,13 @@
+The files in this directory are to enable the user to reproduce the
+plots shown in Fig 8 of the manual, purely as a check that parts of
+the software are working as advertised.
+
+The script isotropy.s needs a parameter, which must be the run number
+of some .dat file in this directory - run201.dat and run301.dat are
+supplied.
+
+run201 is 2D Cartesian grid that uses Plummer softening.
+
+run301 is 3D Cartesian grid that has no explicit softening, but the
+plot created by the script shows that the Monaghan softening rule with
+expsion=1.8 grid spaces is a pretty good fit.

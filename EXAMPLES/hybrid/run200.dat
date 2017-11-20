@@ -1,0 +1,91 @@
+run no           200
+grid type        hyb 2
+1st type         p3d
+2nd type         s3d
+#
+ncom               3           # number of distinct components
+#
+disc               f
+type            adia
+mass            0.3333
+scale          0.2     10.0
+dftype          comp
+# 
+disc               f
+type            adia
+mass         14.7
+scale        30.0    5.0
+dftype          comp
+#
+disc               t           # disc t/f
+type              kt           # type keyword
+mass              0.6667          # mass in this pop
+scale        1.0       5.      # length scale and truncation radius of this pop
+dftype        none     1.5     # Parameter determines coolness of the disk?
+taper              t 4.5
+# 
+# instructions for p3d
+#
+grid size        224  256  125 # mesh dimensions
+z spacing        1.0           #
+HASH               8           # highest active sectoral harmonic
+softl            2.0           # softening length in grid units
+sect               1           # fraction of 2*pi to contain particles
+skip               1           # turn off fixed radial forces
+#
+# instructions for s3d
+#
+grid size       1001 2501
+lmax                4
+#
+# instructions for setrun
+#
+time step    0.015625         # in natural units
+UQMA               t
+zones              7           # number of zones
+                   2   0.4     # step ratio and radius of zone boundary
+                   4   0.8     # step ratio and radius of zone boundary
+                   8   1.5     # step ratio and radius of zone boundary
+                  16   2.5     # step ratio and radius of zone boundary
+                  32   4.0     # step ratio and radius of zone boundary
+                  64   8.0     # step ratio and radius of zone boundary
+lscale         10.0             # length scaling from model to grid units
+offgrid            t  f   f  f # switches to inc ptcls in analysis and forces
+#
+icmp               1
+npar         1000000            # number of particles in this pop
+start        t   f   f         # logicals for dist, smr & quiet
+pgrd             2
+end data for pop 1
+#
+icmp               2
+npar         1000000          # number of particles in this pop
+start         t  f   f
+pgrd             2
+end data for pop 2
+#
+icmp               3
+npar          1000000         # number of particles in this pop
+start         f  f   f
+z0in          0.1  2
+pgrd             1
+end data for pop 3
+#
+analysis         320           # step interval
+plot             640           # buffer size and time interval for pictures
+frqs             20
+dvel fld          5         12 # radial then azimuthal bins
+hvel fld          5         12 # radial then azimuthal bins
+lgsp              61         4 # np then nm
+rhor             100
+hbins            100           # number of ang mom bins
+save                           # further instructions for results file
+intg
+danl
+danl
+intg
+vfld
+end of results file instructions
+#
+end                            last data card
+last step       3200 

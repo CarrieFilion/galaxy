@@ -1,0 +1,17 @@
+run no           100
+grid type        c2d
+#
+# instructions for c2d
+#
+grid size         64        64 # mesh dimensions
+softl       2.0                # softening length in grid units
+#
+nzones             1
+#
+Test mass          5
+posn               8        13         1
+posn               3         1        23
+posn               7         2        23
+posn              15        99         3
+posn               5         9         5
+posn               1         1         1
